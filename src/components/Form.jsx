@@ -158,9 +158,7 @@ const Form = ({ apps, setApps, app, setApp }) => {
           onChange={(e) => setValidateEmail(e.target.value)}
         />
 
-        <label className="block mt-2 font-semibold">
-          Date {'(click the calendar)'}
-        </label>
+        <label className="block mt-2 font-semibold">Date</label>
         <input
           className="block border-2 w-full p-2 rounded-md placeholder-gray-500"
           type="date"
