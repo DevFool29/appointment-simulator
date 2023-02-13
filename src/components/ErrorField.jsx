@@ -1,4 +1,4 @@
-const Error = () => {
+const ErrorField = () => {
   return (
     <div>
       <p className="text-red-600 font-semibold text-lg text-center mb-2">
@@ -8,4 +8,4 @@ const Error = () => {
   )
 }
 
-export default Error
+export default ErrorField

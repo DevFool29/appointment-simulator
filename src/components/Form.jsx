@@ -1,15 +1,22 @@
 import { useEffect, useState } from 'react'
-import Error from './Error'
+import Error from './ErrorField'
 import { v4 as uuidv4 } from 'uuid'
+import EmailError from './EmailError'
+import ErrorEmailRegex from './ErrorEmailRegex'
 
 const Form = ({ apps, setApps, app, setApp }) => {
   const [name, setName] = useState('')
   const [number, setNumber] = useState('')
   const [email, setEmail] = useState('')
+  const [validateEmail, setValidateEmail] = useState('') // To validate if both email inputs are the same
   const [date, setDate] = useState('')
   const [symps, setSymps] = useState('') //symps as a abbreviation of symptomps
 
   const [error, setError] = useState(false) //To show error message if any form field is empty
+  const [emailError, setEmailError] = useState(false) //To show error message if emails are different
+  const [errorEmailRegex, setErrorEmailRegex] = useState(false) // To validate regex expression
+
+  const regexEmail = /[\w-.]+@[\w-_]+(\.[a-zA-Z]{2,4}){1,2}/gm
 
   useEffect(() => {
     if (Object.keys(app).length > 0) {
@@ -56,18 +63,50 @@ const Form = ({ apps, setApps, app, setApp }) => {
         appState.id === app.id ? newApp : appState
       )
 
+      //Validating email by regex expression
+      if (!regexEmail.test(email)) {
+        setErrorEmailRegex(true)
+        return
+      } else {
+        setErrorEmailRegex(false)
+      }
+
+      //Checking if our emails are the same or not
+      if (email !== validateEmail) {
+        setEmailError(true)
+        return
+      } else {
+        setEmailError(false)
+      }
+
       setApps(appsChanged)
       setApp({})
     } else {
-      //New appointment
-      newApp.id = uuidv4() //Generate the id
-      setApps([...apps, newApp])
+      //Validating email by regex expression
+      if (!regexEmail.test(email)) {
+        setErrorEmailRegex(true)
+        return
+      } else {
+        setErrorEmailRegex(false)
+      }
+
+      //Checking if our emails are the same or not
+      if (email !== validateEmail) {
+        setEmailError(true)
+        return
+      } else {
+        setEmailError(false)
+        //New appointment
+        newApp.id = uuidv4() //Generate the id
+        setApps([...apps, newApp])
+      }
     }
 
     //Clear states to reset the form after submit
     setName('')
     setNumber('')
     setEmail('')
+    setValidateEmail('')
     setDate('')
     setSymps('')
   }
@@ -110,6 +149,15 @@ const Form = ({ apps, setApps, app, setApp }) => {
           onChange={(e) => setEmail(e.target.value)}
         />
 
+        <label className="block mt-2 font-semibold">Repeat your email</label>
+        <input
+          className="block mb-3 border-2 w-full p-2 rounded-md placeholder-gray-500"
+          type="email"
+          placeholder="Repite your email"
+          value={validateEmail}
+          onChange={(e) => setValidateEmail(e.target.value)}
+        />
+
         <label className="block mt-2 font-semibold">
           Date {'(click the calendar)'}
         </label>
@@ -129,6 +177,8 @@ const Form = ({ apps, setApps, app, setApp }) => {
         />
 
         {error && <Error />}
+        {emailError && <EmailError />}
+        {errorEmailRegex && <ErrorEmailRegex />}
 
         <input
           type="submit"
