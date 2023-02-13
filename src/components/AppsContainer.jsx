@@ -4,7 +4,7 @@ const AppsContainer = ({ apps, setApp, setApps }) => {
   if (apps.length === 0) {
     return (
       <div className="md:w-1/2 lg:w-3/5 pb-3">
-        <h2 className="font-black text-lg text-center mb-4">
+        <h2 className="font-black text-lg text-center my-4 lg:mb-4 lg:mt-0">
           There is not appointments made yet, add one and {''}
           <span className="text-indigo-500">manage it</span>
         </h2>
@@ -13,7 +13,7 @@ const AppsContainer = ({ apps, setApp, setApps }) => {
   } else {
     return (
       <div className="md:w-1/2 lg:w-3/5">
-        <h2 className="font-black text-lg text-center mb-4">
+        <h2 className="font-black text-lg text-center my-4 lg:mb-4 lg:mt-0">
           List of appointments already made, {''}
           <span className="text-indigo-500">edit yours if necessary</span>
         </h2>

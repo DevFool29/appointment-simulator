@@ -120,7 +120,7 @@ const Form = ({ apps, setApps, app, setApp }) => {
 
       <form
         onSubmit={handleSubmit}
-        className="bg-white shadow-md rounded-lg m-10 mt-5 py-8 p-5"
+        className="bg-white shadow-md rounded-lg mt-5 lg:m-5 py-8 p-5"
       >
         <label className="block font-semibold">Name</label>
         <input

@@ -7,7 +7,7 @@ const AppDetail = ({ apps, app, setApp, setApps }) => {
   }
 
   return (
-    <div className="bg-white m-5 md:mb-5 md:ml-0 px-5 py-5 rounded-xl">
+    <div className="bg-white my-5 md:mb-5 md:ml-0 px-5 py-5 rounded-xl">
       <p className="font-bold text-gray-700">
         Patient's name: {''}
         <span className="font-normal">{name}</span>
@@ -31,7 +31,7 @@ const AppDetail = ({ apps, app, setApp, setApps }) => {
       <p className="font-bold text-gray-700">Symptomps described:</p>
       <p className="font-normal">{symps}</p>
 
-      <div className="flex justify-between">
+      <div className="flex justify-around">
         <button
           type="button"
           className="py-1 px-10 mt-3 bg-indigo-500 hover:bg-indigo-600 text-white font-semibold rounded-md"

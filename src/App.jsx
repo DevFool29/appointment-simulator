@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="container mx-auto mt-10">
       <Header />
-      <div className="md:flex px-10 mt-10">
+      <div className="md:flex px-5 mt-10 py-1">
         <Form apps={apps} setApps={setApps} app={app} setApp={setApp} />
         <AppsContainer apps={apps} setApps={setApps} setApp={setApp} />
       </div>
