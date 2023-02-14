@@ -1,6 +1,4 @@
-# appointment-simulator
-
-# Ecommerce Coderhouse 🤓
+# appointment-simulator 👨‍⚕️
 
 Hello to everyone! This time I want to introduce this simulator in which you can create an appointment, edit or delete it.
 
